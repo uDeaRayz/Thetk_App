@@ -1,0 +1,41 @@
+<!--
+  Generated template for the TimeAttendencPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree" rel="stylesheet">
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="head-font">
+      <ion-icon name="time"></ion-icon>&nbsp;บันทึกเวลา
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div>
+    <ion-list >
+      <a ion-item [navPush] = "create" >
+        <ion-icon name="add-circle"></ion-icon>&nbsp; บันทึกเข้า
+        <ion-icon name="ios-arrow-forward-outline" item-end></ion-icon>
+      </a>
+      <a ion-item [navPush] = "show" >
+          <ion-icon name="copy"></ion-icon>&nbsp; ประวัติการบันทึกเวลา
+          <ion-icon name="ios-arrow-forward-outline" item-end></ion-icon>
+        </a>
+    </ion-list>
+    <!-- <button ion-item>
+      <ion-icon name="add-circle"></ion-icon> &nbsp; บันทึกเข้า
+    </button>
+    <button ion-item>
+      <ion-icon name="add-circle"></ion-icon> &nbsp; บันทึกออก
+    </button>
+    <button ion-item (click)="gotoHistory()">
+      <ion-icon name="copy"></ion-icon> &nbsp; ประวัติการบันทึกเวลา
+    </button> -->
+  </div>
+</ion-content>

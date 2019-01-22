@@ -1,0 +1,33 @@
+<link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree" rel="stylesheet">
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="head-font">
+      <ion-icon name="pin"></ion-icon>&nbsp;บันทึกการทำงานนอกพื้นที่
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list >
+    <a ion-item [navPush] = "create">
+        <ion-icon name="add-circle"></ion-icon> &nbsp; บันทึกการทำงานนอกพื้นที่
+        <ion-icon name="ios-arrow-forward-outline" item-end></ion-icon>
+    </a>
+    <a ion-item [navPush] = "show">
+        <ion-icon name="copy"></ion-icon> &nbsp; ประวัติการทำงานนอกพื้นที่
+        <ion-icon name="ios-arrow-forward-outline" item-end></ion-icon>
+    </a>
+  </ion-list>
+
+  <!-- <div>
+    <button ion-item (click)="gotoAddData()">
+      <ion-icon name="add-circle"></ion-icon> &nbsp; บันทึกการทำงานนอกพื้นที่
+    </button>
+    <button ion-item (click)="gotoHistoryData()">
+      <ion-icon name="copy"></ion-icon> &nbsp; ประวัติการทำงานนอกพื้นที่
+    </button>
+  </div> -->
+</ion-content> 

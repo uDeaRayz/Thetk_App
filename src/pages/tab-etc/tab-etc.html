@@ -1,0 +1,23 @@
+<link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree" rel="stylesheet">
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="head-font">
+      <ion-icon name="menu"></ion-icon>
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <a ion-item [navPush]="show">
+      <ion-icon name="people"></ion-icon> &nbsp; Profile
+      <ion-icon name="ios-arrow-forward-outline" item-end></ion-icon>
+    </a>
+  </ion-list>
+  <ion-list>
+    <button ion-item no-lines>
+      <ion-icon name="log-out"></ion-icon> &nbsp; Logout
+    </button>
+  </ion-list>
+</ion-content>
