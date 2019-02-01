@@ -2,12 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
-/**
- * Generated class for the WorkCreatePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -27,6 +22,8 @@ export class WorkCreatePage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad WorkCreatePage');
   }
+
+  
     takePhoto(){
     const options: CameraOptions = {
       quality: 100,
@@ -40,5 +37,7 @@ export class WorkCreatePage {
     }, (err) => {
     });
   }
+
+  
 
 }

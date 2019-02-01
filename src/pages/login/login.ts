@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { HTTP } from '@ionic-native/http';
+
 // import { Http } from '@angular/http';
 
 
@@ -25,7 +26,7 @@ export class LoginPage {
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    private http: HTTP
+    private http: HTTP,
     ) {
     // this.data.email = '';
     // this.data.response = '';
@@ -53,24 +54,25 @@ export class LoginPage {
   // }
   submit(){
 
-    let headers = new Headers();
-    
-    headers.append('Content-Type','application/json');
+
     console.log(this.email);
-      this.http.post('http://tkweb.com/api/data/create', { email:this.email }, { headers: headers})
-    .then(data => {
-
+    this.http.post('http://127.0.0.1:8000/api/data/post',{ email:'username' },{}).then(data => {
       console.log(data);
-      // console.log(data.data); // data received by server
-      // console.log(data.headers);
-
-    })
-    .catch(error => {
-
-      // console.log(error.status);
-      // console.log(error.error); // error message as string
-      // console.log(error.headers);
-
     });
+    //   this.http.post('http://http://127.0.0.1:8000/api/data/create', { email:this.email }, { headers: headers})
+    // .then(data => {)
+
+    //   console.log(data);
+    //   // console.log(data.data); // data received by server
+    //   // console.log(data.headers);
+
+    // })
+    // .catch(error => {
+
+    //   // console.log(error.status);
+    //   // console.log(error.error); // error message as string
+    //   // console.log(error.headers);
+
+    // });
   }
 }
