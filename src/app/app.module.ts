@@ -2,9 +2,15 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-import { Camera } from '@ionic-native/camera';
+// import { Camera } from '@ionic-native/camera';
+import { Camera, CameraOptions } from '@ionic-native/camera';
 // import { Http } from '@angular/http';
 import { HTTP } from '@ionic-native/http';
+import { WebView } from '@ionic-native/ionic-webview/ngx';
+import 'rxjs/add/operator/toPromise';
+import {HttpClientModule} from '@angular/common/http'
+
+
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -23,6 +29,7 @@ import { DayShowPage } from '../pages/day-show/day-show';
 import { ProfilePage } from '../pages/profile/profile';
 import { ProfileupdatePage } from '../pages/profileupdate/profileupdate';
 import { LoginPage } from '../pages/login/login';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
@@ -45,7 +52,8 @@ import { LoginPage } from '../pages/login/login';
   ],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -71,8 +79,10 @@ import { LoginPage } from '../pages/login/login';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
+    WebView,
     // Http,
     HTTP,
+    AuthServiceProvider,
   ]
 })
 export class AppModule {}

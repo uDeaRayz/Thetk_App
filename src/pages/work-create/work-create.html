@@ -61,12 +61,12 @@
     <ion-label color="dark" floating>รายละเอียดงาน</ion-label>
     <ion-input> </ion-input>
   </ion-item>
-  <p style="text-align: center;"><img src="{{myPhoto}}"></p>
+  <p style="text-align: center;"><img *ngIf="myPhoto" src="{{ myPhoto }}"></p>
   <button ion-button full class="btn" (click)="takePhoto()">
     เพิ่มรูป
   </button>
   <button ion-button full class="btn">
     บันทึก
   </button>
-
+  <button ion-button full class="btn" (click)="test()">TEST</button>
 </ion-content>
