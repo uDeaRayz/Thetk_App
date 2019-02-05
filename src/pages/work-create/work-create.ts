@@ -16,7 +16,14 @@ import 'rxjs/add/operator/toPromise';
 })
 export class WorkCreatePage {
 
+  // ตัวแปร ของรูปภาพ
   myPhoto: any;
+
+  // ตัวแปร เกี่ยวกับการเชื่อมต่อฐานข้อมูล
+  responseData: any;
+  headers: any;
+  userData = {"username": "","password": "", "name": "","email": ""};
+
 
   constructor(
     public navCtrl: NavController, 
@@ -37,25 +44,52 @@ export class WorkCreatePage {
     //     console.log(data);
     //   });
   }
+
+  // ตัวอย่างของฟังก์ชันเชื่อมต่อข้อมูล
+  // Get data
+  testGet() {
+    this.http.get('http://192.168.2.165:8100/api/data/get', {}, {})
+    .then((data) => {
+        console.log(JSON.stringify(data));
+    })
+    .catch((error) => {
+        console.log(JSON.stringify(error));
+    });
+  }
+
+  // Post data
+  // testPost() {
+  //   let data = {
+  //       'Action': 'Login',
+  //       'UserName': 'bla',
+  //       'Password': 'blabla'
+  //   };
+  //   let headers = {
+  //       'Content-Type': 'application/json'
+  //   };
+  //   this.http.post('http://192.168.2.131/api/testpost', data, headers)
+  //   .then((data) => {
+  //       console.log(JSON.stringify(data));
+  //   })
+  //   .catch((error) => {
+  //       console.log(JSON.stringify(error));
+  //   });
+  // }
+
+
+  // ฟังก์ชันการถ่ายภาพ
   takePhoto(pictureSourceType: any){
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
-      sourceType: pictureSourceType,//this.camera.PictureSourceType.CAMERA,
-      // saveToPhotoAlbum: true,
-      // correctOrientation: true,
+      sourceType: pictureSourceType,
     }
-    
     this.camera.getPicture(options).then((imageData) => {
       this.myPhoto = 'data:image/jpeg;base64,' + imageData;
-      
         }, (err) => {
-         console.log('ERROR -> ' + JSON.stringify(err));
-
-    });
-
-    
+          console.log('ERROR -> ' + JSON.stringify(err));
+    });  
   }
 }

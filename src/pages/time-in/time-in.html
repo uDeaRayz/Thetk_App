@@ -1,0 +1,23 @@
+<link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree" rel="stylesheet">
+<ion-header>
+  <ion-navbar>
+    <ion-title class="head-font">
+      บันทึกเข้างาน
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form>
+    <button ion-button full class="btn">
+      แสกน
+    </button>
+    <p style="text-align: center;"><img *ngIf="myPhoto" src="{{ myPhoto }}"></p>
+    <button ion-button full class="btn" (click)="takePhoto()">
+      ถ่ายรูป
+    </button>
+    <button ion-button full class="btn">
+      บันทึก
+    </button>
+  </form>
+</ion-content>

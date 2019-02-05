@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
- * Generated class for the TimeCreatePage page.
+ * Generated class for the TimeOutPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,16 +10,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 @IonicPage()
 @Component({
-  selector: 'page-time-create',
-  templateUrl: 'time-create.html',
+  selector: 'page-time-out',
+  templateUrl: 'time-out.html',
 })
-export class TimeCreatePage {
+export class TimeOutPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TimeCreatePage');
+    console.log('ionViewDidLoad TimeOutPage');
   }
 
 }

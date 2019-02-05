@@ -20,7 +20,6 @@ import { TabTimePage } from '../pages/tab-time/tab-time';
 import { TabWorkPage } from '../pages/tab-work/tab-work';
 import { TabDayoffPage } from '../pages/tab-dayoff/tab-dayoff';
 import { TabEtcPage } from '../pages/tab-etc/tab-etc';
-import { TimeCreatePage } from '../pages/time-create/time-create';
 import { TimeShowPage } from '../pages/time-show/time-show';
 import { WorkCreatePage } from '../pages/work-create/work-create';
 import { WorkShowPage } from '../pages/work-show/work-show';
@@ -30,6 +29,8 @@ import { ProfilePage } from '../pages/profile/profile';
 import { ProfileupdatePage } from '../pages/profileupdate/profileupdate';
 import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { TimeOutPage } from '../pages/time-out/time-out';
+import { TimeInPage } from '../pages/time-in/time-in';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     TabWorkPage,
     TabDayoffPage,
     TabEtcPage,
-    TimeCreatePage,
+    TimeInPage,
+    TimeOutPage,
     TimeShowPage,
     WorkCreatePage,
     WorkShowPage,
@@ -64,7 +66,6 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     TabWorkPage,
     TabDayoffPage,
     TabEtcPage,
-    TimeCreatePage,
     TimeShowPage,
     WorkCreatePage,
     WorkShowPage,
@@ -72,7 +73,9 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
     DayShowPage,
     ProfilePage,
     ProfileupdatePage,
-    LoginPage
+    LoginPage,
+    TimeInPage,
+    TimeOutPage,
   ],
   providers: [
     StatusBar,

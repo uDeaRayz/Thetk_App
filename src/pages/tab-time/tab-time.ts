@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { TimeCreatePage } from '../time-create/time-create';
 import { TimeShowPage } from '../time-show/time-show';
+import { TimeInPage } from '../time-in/time-in';
+import { TimeOutPage } from '../time-out/time-out';
 
-/**
- * Generated class for the TabTimePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -16,7 +12,8 @@ import { TimeShowPage } from '../time-show/time-show';
   templateUrl: 'tab-time.html',
 })
 export class TabTimePage {
-  create = TimeCreatePage;
+  in = TimeInPage;
+  out = TimeOutPage;
   show = TimeShowPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }

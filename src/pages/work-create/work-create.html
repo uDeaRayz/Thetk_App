@@ -8,65 +8,45 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-item>
-    <ion-label color="dark" floating>ชื่อสถานที่</ion-label>
-    <ion-input></ion-input>
-  </ion-item>
-  <ion-item no-lines>
-    <ion-label>จังหวัด</ion-label>
-    <ion-select [(ngModel)]="province">
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item no-lines>
-    <ion-label>อำเภอ</ion-label>
-    <ion-select [(ngModel)]="District">
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item no-lines>
-    <ion-label>ตำบล</ion-label>
-    <ion-select [(ngModel)]="subDistrict">
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-      <ion-option value="f">Female</ion-option>
-      <ion-option value="m">Male</ion-option>
-    </ion-select>
-  </ion-item>
-  <ion-item>
-    <ion-label color="dark" floating>รายละเอียดงาน</ion-label>
-    <ion-input> </ion-input>
-  </ion-item>
-  <p style="text-align: center;"><img *ngIf="myPhoto" src="{{ myPhoto }}"></p>
-  <button ion-button full class="btn" (click)="takePhoto()">
-    เพิ่มรูป
-  </button>
-  <button ion-button full class="btn">
-    บันทึก
-  </button>
-  <button ion-button full class="btn" (click)="test()">TEST</button>
+  <form>
+    <ion-item>
+      <ion-label color="dark" floating>ชื่อสถานที่</ion-label>
+      <ion-input></ion-input>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>จังหวัด</ion-label>
+      <ion-select [(ngModel)]="province" name="province">
+        <ion-option value="f">Female</ion-option>
+        <ion-option value="m">Male</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>อำเภอ</ion-label>
+      <ion-select [(ngModel)]="District" name="dist">
+        <ion-option value="f">Female</ion-option>
+        <ion-option value="m">Male</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>ตำบล</ion-label>
+      <ion-select [(ngModel)]="subDistrict" name="subdist">
+        <ion-option value="f">Female</ion-option>
+        <ion-option value="m">Male</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label color="dark" floating>รายละเอียดงาน</ion-label>
+      <ion-input> </ion-input>
+    </ion-item>
+    <p style="text-align: center;"><img *ngIf="myPhoto" src="{{ myPhoto }}"></p>
+    <button ion-button full class="btn" (click)="takePhoto()">
+      เพิ่มรูป
+    </button>
+    <button ion-button full class="btn">
+      บันทึก
+    </button>
+  
+    <button ion-button full class="btn" (click)="testGet()">TEST GET</button>
+    <button ion-button full class="btn" (click)="testPost()">TEST POST</button>
+  </form>
 </ion-content>
