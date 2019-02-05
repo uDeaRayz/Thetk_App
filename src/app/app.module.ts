@@ -9,8 +9,7 @@ import { HTTP } from '@ionic-native/http';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import 'rxjs/add/operator/toPromise';
 import {HttpClientModule} from '@angular/common/http'
-
-
+import { IonicStorageModule } from '@ionic/storage';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -55,7 +54,8 @@ import { TimeInPage } from '../pages/time-in/time-in';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpClientModule
+    HttpClientModule,
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [

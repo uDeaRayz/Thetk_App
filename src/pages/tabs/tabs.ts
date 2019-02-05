@@ -16,7 +16,7 @@ export class TabsPage {
   tab3Root = TabWorkPage;
   tab4Root = TabDayoffPage;
   tab5Root = TabEtcPage;
-
+  
   constructor() {
 
   }

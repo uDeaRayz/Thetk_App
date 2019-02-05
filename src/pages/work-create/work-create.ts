@@ -8,6 +8,7 @@ import 'rxjs/add/operator/toPromise';
 
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-work-create',
@@ -47,27 +48,8 @@ export class WorkCreatePage {
 
   // ตัวอย่างของฟังก์ชันเชื่อมต่อข้อมูล
   // Get data
-  testGet() {
-    this.http.get('http://192.168.2.165:8100/api/data/get', {}, {})
-    .then((data) => {
-        console.log(JSON.stringify(data));
-    })
-    .catch((error) => {
-        console.log(JSON.stringify(error));
-    });
-  }
-
-  // Post data
-  // testPost() {
-  //   let data = {
-  //       'Action': 'Login',
-  //       'UserName': 'bla',
-  //       'Password': 'blabla'
-  //   };
-  //   let headers = {
-  //       'Content-Type': 'application/json'
-  //   };
-  //   this.http.post('http://192.168.2.131/api/testpost', data, headers)
+  // testGet() {
+  //   this.http.get('http://192.168.2.165:8000/api/data/get', {}, {})
   //   .then((data) => {
   //       console.log(JSON.stringify(data));
   //   })
@@ -75,6 +57,57 @@ export class WorkCreatePage {
   //       console.log(JSON.stringify(error));
   //   });
   // }
+
+  // Post data
+  // testPost() {
+  //   const  myform = new FormData();
+  //   myform.append('action', 'ionic');
+  //   myform.append('password', 'ionic1');
+    
+
+  //   // let data = {
+  //   //     'Action': 'Login',
+  //   //     'UserName': 'bla',
+  //   //     'Password': 'blabla'
+  //   // };
+  //   let headers = {
+  //       // 'Content-Type': 'application/json'
+  //       'Content-Type': 'application/x-www-form-urlencoded',
+  //   };
+
+  //   let body = 'action=gggg'; 
+
+  //   // this.http.post('http://192.168.2.131/api/testpost', body, headers)
+  //   // .then((data) => {
+  //   //     console.log(data);
+  //   // })
+  //   // .catch((error) => {
+  //   //     console.log(JSON.stringify(error));
+  //   // });
+  // }
+
+ 
+  testPost(){
+    this.http.post('http://192.168.2.131/api/testpost', {
+      action: 12,
+      message: 'test'
+    }, { Authorization: 'OAuth2: token' })
+    .then(data => {
+
+      console.log(data.status);
+      console.log(data.data); // data received by server
+      console.log(data.headers);
+
+    })
+    .catch(error => {
+
+      console.log(error.status);
+      console.log(error.error); // error message as string
+      console.log(error.headers);
+
+    });
+  }
+
 
 
   // ฟังก์ชันการถ่ายภาพ
