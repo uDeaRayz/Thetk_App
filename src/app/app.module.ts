@@ -2,9 +2,7 @@ import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
-// import { Camera } from '@ionic-native/camera';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-// import { Http } from '@angular/http';
+import { Camera} from '@ionic-native/camera';
 import { HTTP } from '@ionic-native/http';
 import { WebView } from '@ionic-native/ionic-webview/ngx';
 import 'rxjs/add/operator/toPromise';
@@ -30,6 +28,7 @@ import { LoginPage } from '../pages/login/login';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { TimeOutPage } from '../pages/time-out/time-out';
 import { TimeInPage } from '../pages/time-in/time-in';
+import { AmountPage } from '../pages/amount/amount';
 
 @NgModule({
   declarations: [
@@ -49,7 +48,8 @@ import { TimeInPage } from '../pages/time-in/time-in';
     DayShowPage,
     ProfilePage,
     ProfileupdatePage,
-    LoginPage
+    LoginPage,
+    AmountPage,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +76,7 @@ import { TimeInPage } from '../pages/time-in/time-in';
     LoginPage,
     TimeInPage,
     TimeOutPage,
+    AmountPage,
   ],
   providers: [
     StatusBar,
@@ -83,7 +84,6 @@ import { TimeInPage } from '../pages/time-in/time-in';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
     WebView,
-    // Http,
     HTTP,
     AuthServiceProvider,
   ]

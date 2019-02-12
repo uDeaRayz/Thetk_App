@@ -9,14 +9,14 @@
 </ion-header>
 
 <ion-content>
+  <ion-item >
+    <ion-avatar item-left>
+      <img src="">
+    </ion-avatar>
+    <h2>{{ fname }} {{ lname }}</h2>
+  </ion-item>
   <ion-list>
-    <a ion-item [navPush]="show">
-      <ion-icon name="people"></ion-icon> &nbsp; Profile
-      <ion-icon name="ios-arrow-forward-outline" item-end></ion-icon>
-    </a>
-  </ion-list>
-  <ion-list>
-    <button ion-item no-lines>
+    <button ion-item no-lines  (click)="logout()">
       <ion-icon name="log-out"></ion-icon> &nbsp; Logout
     </button>
   </ion-list>

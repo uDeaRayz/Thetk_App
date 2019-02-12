@@ -8,9 +8,10 @@
 <ion-content padding>
   <label class="h-font">ข้อมูลทั่วไป</label>
   <ul>
-    <li>วันที่</li>
-    <li>เวลา</li>
-    <li value="{{ name }}"></li>
+    <li>วันที่: {{today | date: 'EEEE dd MMMM yyyy'}}</li>
+    <li>เวลา: {{today | date: 'h:mm:ss a'}}</li>
   </ul>
 
 </ion-content>
+
+

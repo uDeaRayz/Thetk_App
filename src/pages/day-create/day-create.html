@@ -9,61 +9,52 @@
 
 
 <ion-content padding>
-  <ion-item>
-    <ion-label color="dark">ประเภทการลา</ion-label>
-    <ion-select [(ngModel)]="interfaces" interface="popover">
-      <ion-option value="select">เลือก</ion-option>
-      <ion-option value="action">ลากิจ</ion-option>
-      <ion-option value="popover">ลาป่วย</ion-option>
-    </ion-select>
-  </ion-item>
-
-  <ion-list radio-group [(ngModel)]="tpyeleave">
-    <ion-item no-lines>
-      <ion-label>ลาครึ่งวัน</ion-label>
-      <ion-radio value="half" checked></ion-radio>
-    </ion-item>
+  <ion-list>
     <ion-item>
-      <ion-label>ลาเต็มวัน</ion-label>
-      <ion-radio value="full"></ion-radio>
+      <ion-label>ประเภทการลา</ion-label>
+      <ion-select [(ngModel)]="leave_id">
+        <ion-option *ngFor="let data of leave" value="{{ data.amount_id }}">{{ data.leave_name }}</ion-option>
+      </ion-select>
     </ion-item>
   </ion-list>
-  <div>
-    <div>
-      <!-- ลาครึ่งวัน-->
-      <ion-list radio-group [(ngModel)]="timeleave">
-        <ion-item no-lines>
-          <ion-label>ครึ่งวันเช้า</ion-label>
-          <ion-radio value="morning" checked></ion-radio>
-        </ion-item>
-        <ion-item>
-          <ion-label>ครึ่งวันบ่าย</ion-label>
-          <ion-radio value="evening"></ion-radio>
-        </ion-item>
-      </ion-list>
-      <ion-item no-lines>
-        <ion-label color="dark">วันที่</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="halfDate"></ion-datetime>
-      </ion-item>
-    </div>
-    <div>
-      <!-- ลาเต็มวัน-->
-      <ion-item no-lines>
-        <ion-label color="dark">วันที่เริ่มลา</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="startDate"></ion-datetime>
-      </ion-item>
-      <ion-item no-lines>
-        <ion-label color="dark">วันที่สิ้นสุด</ion-label>
-        <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="endDate"></ion-datetime>
-      </ion-item>
-    </div>
-  </div>
-  <div>
+  <ion-list radio-group [(ngModel)]="tpyeleave">
+    <ion-list-header class="header">
+      รูปแบบการลา
+    </ion-list-header>
     <ion-item no-lines>
-      <ion-label color="dark" floating>รายละเอียดการลา</ion-label>
-      <ion-input ></ion-input>
+      <ion-label>ลาครึ่งวันเช้า</ion-label>
+      <ion-radio value="1" checked></ion-radio>
     </ion-item>
-  </div>
-  <button ion-button full (click)="openCamera()"> บันทึกภาพ</button>
+    <ion-item no-lines>
+      <ion-label>ลาครึ่งวันบ่าย</ion-label>
+      <ion-radio value="2" checked></ion-radio>
+    </ion-item>
+    <ion-item no-lines>
+      <ion-label>ลาเต็มวัน</ion-label>
+      <ion-radio value="3"></ion-radio>
+    </ion-item>
+  </ion-list>
+  <hr>
+  <ion-list>
+    <ion-list-header class="header">
+        วันที่ลา
+    </ion-list-header>
+    <ion-item>
+      <ion-label>เริ่มต้น</ion-label>
+      <ion-datetime displayFormat="DD MM YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+      <ion-label>สิ้นสุด</ion-label>
+      <ion-datetime displayFormat="DD MM YYYY"></ion-datetime>
+    </ion-item>
+    <ion-item>
+        <ion-label color="dark" floating class="head">รายละเอียดการลา</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </ion-list>
+  <p style="text-align: center;"><img *ngIf="leave_img" src="{{ leave_img }}"></p>
+  <button ion-button full class="btn" (click)="TakePhoto()">
+    เพิ่มรูป
+  </button>
   <button ion-button full (click)="onSubmit()">บันทึกการลา</button>
 </ion-content>

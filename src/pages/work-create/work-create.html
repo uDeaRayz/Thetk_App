@@ -11,42 +11,51 @@
   <form>
     <ion-item>
       <ion-label color="dark" floating>ชื่อสถานที่</ion-label>
-      <ion-input></ion-input>
+      <ion-input type="text" [(ngModel)]="place_name" name="place_name"></ion-input>
     </ion-item>
     <ion-item no-lines>
       <ion-label>จังหวัด</ion-label>
       <ion-select [(ngModel)]="province" name="province">
-        <ion-option value="f">Female</ion-option>
-        <ion-option value="m">Male</ion-option>
+        <ion-option *ngFor="let data of jParse" value="{{ data.prov_id }}">{{ data.prov_name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item no-lines>
       <ion-label>อำเภอ</ion-label>
-      <ion-select [(ngModel)]="District" name="dist">
-        <ion-option value="f">Female</ion-option>
-        <ion-option value="m">Male</ion-option>
+      <ion-select [(ngModel)]="dist" name="dist">
+        <ion-option value="f">อำเภอ</ion-option>
       </ion-select>
     </ion-item>
     <ion-item no-lines>
       <ion-label>ตำบล</ion-label>
-      <ion-select [(ngModel)]="subDistrict" name="subdist">
-        <ion-option value="f">Female</ion-option>
-        <ion-option value="m">Male</ion-option>
+      <ion-select [(ngModel)]="subdist" name="subdist">
+        <ion-option value="f">ตำบล</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label color="dark" floating>รายละเอียดงาน</ion-label>
-      <ion-input> </ion-input>
+      <ion-input type="text" [(ngModel)]="detail" name="detail"></ion-input>
     </ion-item>
     <p style="text-align: center;"><img *ngIf="myPhoto" src="{{ myPhoto }}"></p>
     <button ion-button full class="btn" (click)="takePhoto()">
       เพิ่มรูป
     </button>
-    <button ion-button full class="btn">
+    <button ion-button full class="btn" (click)="workSubmit()">
       บันทึก
     </button>
-  
-    <button ion-button full class="btn" (click)="testGet()">TEST GET</button>
-    <button ion-button full class="btn" (click)="testPost()">TEST POST</button>
   </form>
 </ion-content>
+
+
+<script type="text/javascript">
+  $('#province').change(function () {
+    if ($(this).val() != '') {
+      var select = $(this).val();
+      var _token = $('input[name="_token"]').val();
+      $.ajax({
+        url: "http://192.168.2.165:8000/api/district/",
+        method: "POST",
+        data: { select: select, _token: _token }
+      })
+    }
+  });
+</script>

@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
+import { Storage } from '@ionic/storage';
 
 
 
@@ -19,96 +20,58 @@ export class WorkCreatePage {
 
   // ตัวแปร ของรูปภาพ
   myPhoto: any;
-
-  // ตัวแปร เกี่ยวกับการเชื่อมต่อฐานข้อมูล
-  responseData: any;
-  headers: any;
-  userData = {"username": "","password": "", "name": "","email": ""};
+  jParse: any;
+  dist:any;
 
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     private camera: Camera,
-    private http: HTTP
+    private http: HTTP,
+    private storage: Storage,
     ) {
   }
 
   ionViewDidLoad() {
+
+    // Province
+    this.http.get('http://192.168.2.165:8000/api/province', {}, {})
+    .then(data => {
+        if(data.status == 200)
+        {
+          this.jParse = JSON.parse(data.data);
+          console.log('Success'); 
+        }
+        else{
+          console.log('Data no Match'); 
+        }
+      })
+      .catch(error => {
+        console.log(error.status);
+      });
+
+      // this.http.post('http://192.168.2.165:8000/api/district/', 
+      // { dist: this.dist }, {Authorization: 'OAuth2: token'})
+      // .then(data => {
+      //   if(data.status == 200)
+      //   {
+      //     this.jParse = JSON.parse(data.data);
+      //     // this.storage.set('leaveName', jParse.leave_name);
+      //     // this.storage.set('amountNum', jParse.amount_num);
+      //     console.log(JSON.stringify(data.data)); 
+      //   }
+      //   else{
+      //     console.log('Data no Match'); 
+      //   }
+      // })
+      // .catch(error => {
+      //   console.log(error.status);
+      // });
+
     console.log('ionViewDidLoad WorkCreatePage');
     
   }
-
-  test()
-  {
-    // this.http.post('http://127.0.0.1:8000/api/data/post',{email: 'text'} ,{}).then(data => {
-    //     console.log(data);
-    //   });
-  }
-
-  // ตัวอย่างของฟังก์ชันเชื่อมต่อข้อมูล
-  // Get data
-  // testGet() {
-  //   this.http.get('http://192.168.2.165:8000/api/data/get', {}, {})
-  //   .then((data) => {
-  //       console.log(JSON.stringify(data));
-  //   })
-  //   .catch((error) => {
-  //       console.log(JSON.stringify(error));
-  //   });
-  // }
-
-  // Post data
-  // testPost() {
-  //   const  myform = new FormData();
-  //   myform.append('action', 'ionic');
-  //   myform.append('password', 'ionic1');
-    
-
-  //   // let data = {
-  //   //     'Action': 'Login',
-  //   //     'UserName': 'bla',
-  //   //     'Password': 'blabla'
-  //   // };
-  //   let headers = {
-  //       // 'Content-Type': 'application/json'
-  //       'Content-Type': 'application/x-www-form-urlencoded',
-  //   };
-
-  //   let body = 'action=gggg'; 
-
-  //   // this.http.post('http://192.168.2.131/api/testpost', body, headers)
-  //   // .then((data) => {
-  //   //     console.log(data);
-  //   // })
-  //   // .catch((error) => {
-  //   //     console.log(JSON.stringify(error));
-  //   // });
-  // }
-
- 
-  testPost(){
-    this.http.post('http://192.168.2.131/api/testpost', {
-      action: 12,
-      message: 'test'
-    }, { Authorization: 'OAuth2: token' })
-    .then(data => {
-
-      console.log(data.status);
-      console.log(data.data); // data received by server
-      console.log(data.headers);
-
-    })
-    .catch(error => {
-
-      console.log(error.status);
-      console.log(error.error); // error message as string
-      console.log(error.headers);
-
-    });
-  }
-
-
 
   // ฟังก์ชันการถ่ายภาพ
   takePhoto(pictureSourceType: any){

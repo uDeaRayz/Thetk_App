@@ -1,0 +1,36 @@
+<link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree" rel="stylesheet">
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="head-font">วันลาคงเหลือ</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-grid>
+      <ion-row>
+        <ion-col> 
+          <div class="title text-center">ประเภท</div>
+        </ion-col>
+        <ion-col offset-4>
+          <div class="title text-center">จำนวนวัน</div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <!-- Loop Show Value -->
+    <ion-item *ngFor="let data of jParse">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="text-center">{{ data.leave_name}}</div>
+          </ion-col>
+          <ion-col offset-4>
+            <div class="text-center">{{ data.amount_num }} วัน</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+</ion-content>
