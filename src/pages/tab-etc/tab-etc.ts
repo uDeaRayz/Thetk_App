@@ -19,6 +19,7 @@ export class TabEtcPage {
   img : any;
   fname : string;
   lname : string;
+  url : string;
   
   constructor(
     public navCtrl: NavController, 
@@ -35,8 +36,15 @@ export class TabEtcPage {
     this.storage.get('userlName').then((val) => {
       this.lname = val;
     });
+    this.storage.get('userImg').then((val) => {
+      this.img = val;
+    });
+    this.storage.get('url').then((val) => {
+      this.url = val;
+    });
 
 
+    console.log('ionViewDidLoad TabEtcPage');
     console.log('ionViewDidLoad TabEtcPage');
   }
 

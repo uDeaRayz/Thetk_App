@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { TimeInPage } from '../time-in/time-in';
+import { TimeOutPage } from '../time-out/time-out';
 
 
 @IonicPage()
-@Component({
+@Component({ 
   selector: 'page-tab-home',
   templateUrl: 'tab-home.html',
 })
@@ -20,8 +22,14 @@ export class TabHomePage {
     console.log('ionViewDidLoad TabHomePage');
   }
 
-      
+  In(){
+    this.navCtrl.push(TimeInPage);
+  }
+  Out(){
+    this.navCtrl.push(TimeOutPage);
+  }
 
+  
 
 
 }

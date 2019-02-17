@@ -36,7 +36,7 @@ export class WorkCreatePage {
   ionViewDidLoad() {
 
     // Province
-    this.http.get('http://192.168.2.165:8000/api/province', {}, {})
+    this.http.get('http://172.20.10.2:8000/api/province', {}, {})
     .then(data => {
         if(data.status == 200)
         {
@@ -50,24 +50,6 @@ export class WorkCreatePage {
       .catch(error => {
         console.log(error.status);
       });
-
-      // this.http.post('http://192.168.2.165:8000/api/district/', 
-      // { dist: this.dist }, {Authorization: 'OAuth2: token'})
-      // .then(data => {
-      //   if(data.status == 200)
-      //   {
-      //     this.jParse = JSON.parse(data.data);
-      //     // this.storage.set('leaveName', jParse.leave_name);
-      //     // this.storage.set('amountNum', jParse.amount_num);
-      //     console.log(JSON.stringify(data.data)); 
-      //   }
-      //   else{
-      //     console.log('Data no Match'); 
-      //   }
-      // })
-      // .catch(error => {
-      //   console.log(error.status);
-      // });
 
     console.log('ionViewDidLoad WorkCreatePage');
     
@@ -84,8 +66,16 @@ export class WorkCreatePage {
     }
     this.camera.getPicture(options).then((imageData) => {
       this.myPhoto = 'data:image/jpeg;base64,' + imageData;
+      // console.log(this.myPhoto);
         }, (err) => {
           console.log('ERROR -> ' + JSON.stringify(err));
     });  
   }
+
+  upload(){
+    this.storage.get('userID').then((val) => {
+  
+    });
+  }
+  
 }

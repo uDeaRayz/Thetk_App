@@ -9,15 +9,16 @@
 
 <ion-content padding>
   <form>
-    <button ion-button full class="btn">
+    <button ion-button full class="btn" (click)="ScanIn()">
       แสกน
     </button>
-    <p style="text-align: center;"><img *ngIf="myPhoto" src="{{ myPhoto }}"></p>
+    <p style="text-align: center;"><img *ngIf="PhotoIn" src="{{ PhotoIn }}"></p>
     <button ion-button full class="btn" (click)="takePhoto()">
       ถ่ายรูป
     </button>
-    <button ion-button full class="btn">
+    <button ion-button full class="btn"  (click)="save()">
       บันทึก
     </button>
+    {{ textQR }}
   </form>
 </ion-content>

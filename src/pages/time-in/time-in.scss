@@ -6,9 +6,13 @@ page-time-in {
         font-size: 18px;
         font-family: "Athiti", sans-serif;
       }
-      .btn {
-        font-size: 16px;
-        height: 35px;
+      .btn{
+        font-size: 14pt;
+        font-weight: bold;
         font-family: "Athiti", sans-serif;
+        background-color: #2e89ba;
+      }
+      .transparentBody {
+        background: transparent !important;
       }
 }

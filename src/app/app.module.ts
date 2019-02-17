@@ -8,6 +8,10 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import 'rxjs/add/operator/toPromise';
 import {HttpClientModule} from '@angular/common/http'
 import { IonicStorageModule } from '@ionic/storage';
+import { QRScanner } from '@ionic-native/qr-scanner';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
+import { FileTransfer } from '@ionic-native/file-transfer';
+import { File } from '@ionic-native/file';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -29,6 +33,7 @@ import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { TimeOutPage } from '../pages/time-out/time-out';
 import { TimeInPage } from '../pages/time-in/time-in';
 import { AmountPage } from '../pages/amount/amount';
+
 
 @NgModule({
   declarations: [
@@ -86,6 +91,10 @@ import { AmountPage } from '../pages/amount/amount';
     WebView,
     HTTP,
     AuthServiceProvider,
+    QRScanner,
+    BarcodeScanner,
+    FileTransfer,
+    File,
   ]
 })
 export class AppModule {}

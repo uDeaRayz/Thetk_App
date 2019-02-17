@@ -10,4 +10,20 @@ page-tab-etc {
         font-size: 16px;
         font-family: "Athiti", sans-serif;
       }
+      .avatar {
+        margin: 8px;
+        border-radius: 50%;
+        width: 150px;
+        height: 150px;
+        border: 5px solid rgb(219, 219, 219);
+      }
+      .text-center{
+        text-align: center;
+      }
+      .btn{
+        font-size: 16pt;
+        font-weight: bold;
+        font-family: "Athiti", sans-serif;
+        text-align: center;
+      }
 }

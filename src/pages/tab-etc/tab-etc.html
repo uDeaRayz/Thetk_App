@@ -9,15 +9,20 @@
 </ion-header>
 
 <ion-content>
-  <ion-item >
-    <ion-avatar item-left>
-      <img src="">
-    </ion-avatar>
-    <h2>{{ fname }} {{ lname }}</h2>
-  </ion-item>
-  <ion-list>
-    <button ion-item no-lines  (click)="logout()">
+  <div class="text-center">
+    <img class="avatar" src="{{ url }}{{ img }}">
+  </div>
+  <ion-list >
+    <ion-item no-lines class="text-center">
+      <h2 style="font-size:18pt;">{{ fname }} {{ lname }}</h2>
+    </ion-item>
+  </ion-list>
+  <br>
+  <br>
+  <div style="text-align:center;">
+    <button ion-button class="btn" full outline (click)="logout()">
       <ion-icon name="log-out"></ion-icon> &nbsp; Logout
     </button>
-  </ion-list>
+  </div>
+
 </ion-content>

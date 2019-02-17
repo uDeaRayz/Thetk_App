@@ -11,7 +11,12 @@
     <li>วันที่: {{today | date: 'EEEE dd MMMM yyyy'}}</li>
     <li>เวลา: {{today | date: 'h:mm:ss a'}}</li>
   </ul>
-
+  <br>
+  <br>
+  <ion-list>
+    <button ion-button full class="btn" (click)="In()">บันทึกเข้างาน</button>
+    <button ion-button full class="btn" (click)="Out()">บันทึกออกงาน</button>
+  </ion-list>
 </ion-content>
-
+  
 
