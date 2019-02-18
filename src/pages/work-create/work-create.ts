@@ -36,7 +36,7 @@ export class WorkCreatePage {
   ionViewDidLoad() {
 
     // Province
-    this.http.get('http://172.20.10.2:8000/api/province', {}, {})
+    this.http.get('http://192.168.2.165:8000/api/province', {}, {})
     .then(data => {
         if(data.status == 200)
         {
@@ -45,14 +45,12 @@ export class WorkCreatePage {
         }
         else{
           console.log('Data no Match'); 
-        }
+        } 
       })
       .catch(error => {
         console.log(error.status);
       });
-
-    console.log('ionViewDidLoad WorkCreatePage');
-    
+    console.log('ionViewDidLoad WorkCreatePage')
   }
 
   // ฟังก์ชันการถ่ายภาพ

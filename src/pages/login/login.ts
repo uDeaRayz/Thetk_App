@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController,LoadingController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
@@ -12,8 +12,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  email = 'admin@test.com';
-  password = '111111';
+  email = 'staff@test.com';
+  password = '0960030344';
 
  
 
@@ -26,6 +26,7 @@ export class LoginPage {
     public authService: AuthServiceProvider,
     private storage: Storage,
     public alertCtrl: AlertController,
+    public loadingCtrl: LoadingController,
     ) {      
 
   }
@@ -35,7 +36,12 @@ export class LoginPage {
   }
 
   submit(){
-    this.http.post('http://172.20.10.2:8000/api/login', {
+
+    let loader = this.loadingCtrl.create({
+      content: "Waiting..."
+    });
+
+    this.http.post('http://192.168.2.165:8000/api/login', {
       email: this.email,
       password: this.password,
     }, { Authorization: 'OAuth2: token' })
@@ -47,8 +53,9 @@ export class LoginPage {
         this.storage.set('userfName', jParse.fname);
         this.storage.set('userlName', jParse.lname);
         this.storage.set('userImg', jParse.img);
-        this.storage.set('url', 'http://172.20.10.2:8000/');
+        this.storage.set('url', 'http://192.168.2.165:8000/');
         console.log('Login Success'); 
+        loader.dismiss(); 
         this.navCtrl.push(TabsPage);
       }
       else{
@@ -58,16 +65,18 @@ export class LoginPage {
           buttons: ['OK']
         });
         alert.present();
+        loader.dismiss(); 
         console.log('Login Fail'); 
       }
     })
     .catch(error => {
       const alert = this.alertCtrl.create({
         title: 'error',
-        subTitle: 'Email or Password is wrong!',
+        subTitle: 'Please try again!',
         buttons: ['OK']
       });
       alert.present();
+      loader.dismiss(); 
       console.log(error.status);
     });
   }
