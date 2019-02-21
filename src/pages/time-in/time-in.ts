@@ -5,6 +5,10 @@ import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { Platform } from 'ionic-angular';
+import { normalizeURL } from 'ionic-angular';
+
+
 // import { Storage } from '@ionic/storage';
 
 @IonicPage()
@@ -18,6 +22,7 @@ export class TimeInPage {
 
   PhotoIn: any;
   textQR: any;
+  filePath: any;
 
   constructor(
     public navCtrl: NavController,
@@ -28,6 +33,7 @@ export class TimeInPage {
     // private storage: Storage,
     public authService: AuthServiceProvider,
     public loadingCtrl: LoadingController,
+    public platform: Platform
   ) {
   }
 
@@ -49,23 +55,19 @@ export class TimeInPage {
   takePhoto(pictureSourceType: any){
     const options: CameraOptions = {
       quality: 100,
-      destinationType: this.camera.DestinationType.DATA_URL,
+      destinationType: this.camera.DestinationType.FILE_URI,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       sourceType: pictureSourceType,
     }
     this.camera.getPicture(options).then((imageData) => {
-      this.PhotoIn = 'data:image/jpeg;base64,' + imageData;
-      this.http.post('http://192.168.2.165:8000/api/upload_file', {
-        file: this.PhotoIn,
-      }, { Authorization: 'OAuth2: token' })
-      .then(data => {   
-        console.log('data -> ' + data.data.msg);
-        
-      })
-      .catch(error => {
-        
-      });
+      this.filePath = imageData;
+      console.log(imageData);
+
+      if (this.platform.is('ios'))
+        this.PhotoIn = normalizeURL(imageData);
+      else
+        this.PhotoIn= "data:image/jpeg;base64," + imageData;
 
     }, (err) => {
           console.log('ERROR -> ',err);
@@ -75,8 +77,17 @@ export class TimeInPage {
 
 
 
-  // save(){
- 
-  // }
+  save(){
+    this.http.uploadFile('http://192.168.2.131/api/upload_file', {
+      id: 12,
+    }, { Authorization: 'OAuth2: token' }, this.filePath, 'picture')
+    .then(data => {   
+      console.log('data -> ' + data.data);
+      
+    })
+    .catch(error => {
+      console.log('error -> ' + error);
+    });
+  }
 
 }

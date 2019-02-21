@@ -15,20 +15,20 @@
     </ion-item>
     <ion-item no-lines>
       <ion-label>จังหวัด</ion-label>
-      <ion-select [(ngModel)]="province" name="province">
+      <ion-select [(ngModel)]="province" name="province" (ngModelChange)="getAmphoe($event)">
         <ion-option *ngFor="let data of jParse" value="{{ data.prov_id }}">{{ data.prov_name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item no-lines>
       <ion-label>อำเภอ</ion-label>
-      <ion-select [(ngModel)]="dist" name="dist">
-        <ion-option value="f">อำเภอ</ion-option>
+      <ion-select [(ngModel)]="dist" name="dist" (ngModelChange)="getTambon($event)">
+        <ion-option *ngFor="let data of arrAmphoe" value="{{ data.dist_id }}">{{ data.dist_name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item no-lines>
       <ion-label>ตำบล</ion-label>
       <ion-select [(ngModel)]="subdist" name="subdist">
-        <ion-option value="f">ตำบล</ion-option>
+        <ion-option *ngFor="let data of arrTambon" value="{{ data.subdist_id }}">{{ data.subdist_name }}</ion-option>
       </ion-select>
     </ion-item>
     <ion-item>

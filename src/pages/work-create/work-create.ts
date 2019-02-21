@@ -22,6 +22,10 @@ export class WorkCreatePage {
   myPhoto: any;
   jParse: any;
   dist:any;
+  provinceID: any;
+  amphoeID: any;
+  arrAmphoe: any;
+  arrTambon: any;
 
 
   constructor(
@@ -36,7 +40,7 @@ export class WorkCreatePage {
   ionViewDidLoad() {
 
     // Province
-    this.http.get('http://192.168.2.165:8000/api/province', {}, {})
+    this.http.get('http://192.168.2.131/api/province', {}, {})
     .then(data => {
         if(data.status == 200)
         {
@@ -74,6 +78,60 @@ export class WorkCreatePage {
     this.storage.get('userID').then((val) => {
   
     });
+  }
+
+  getAmphoe(value: any)
+  {
+    this.provinceID = value;
+    console.log(value);
+    if(value != "")
+    {
+      this.http.post('http://192.168.2.131/api/district', {
+        prov_id: value,
+      
+      }, { Authorization: 'OAuth2: token' })
+      .then(data => {
+          if(data.status == 200)
+          {
+            this.arrAmphoe = JSON.parse(data.data);
+            console.log('Success'); 
+          }
+          else{
+            console.log('Data no Match'); 
+          } 
+        })
+        .catch(error => {
+          console.log(error.status);
+        });
+    }
+
+  }
+
+  getTambon(value: any)
+  {
+    this.amphoeID = value;
+    console.log(value);
+    if(value != "")
+    {
+      this.http.post('http://192.168.2.131/api/subdist', {
+        dist_id: value,
+      
+      }, { Authorization: 'OAuth2: token' })
+      .then(data => {
+          if(data.status == 200)
+          {
+            this.arrTambon = JSON.parse(data.data);
+            console.log('Success'); 
+          }
+          else{
+            console.log('Data no Match'); 
+          } 
+        })
+        .catch(error => {
+          console.log(error.status);
+        });
+    }
+    
   }
   
 }
