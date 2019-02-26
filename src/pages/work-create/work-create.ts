@@ -21,11 +21,18 @@ export class WorkCreatePage {
   // ตัวแปร ของรูปภาพ
   myPhoto: any;
   jParse: any;
-  dist:any;
+  // dist:any;
   provinceID: any;
   amphoeID: any;
   arrAmphoe: any;
   arrTambon: any;
+
+  place_name = '';
+  province = '';
+  dist ='';
+  subdist ='';
+  detail = '';
+
 
 
   constructor(
@@ -74,12 +81,7 @@ export class WorkCreatePage {
     });  
   }
 
-  upload(){
-    this.storage.get('userID').then((val) => {
-  
-    });
-  }
-
+  // ฟังก์ชันอำเภอ
   getAmphoe(value: any)
   {
     this.provinceID = value;
@@ -107,6 +109,7 @@ export class WorkCreatePage {
 
   }
 
+  // ฟังก์ชันตำบล
   getTambon(value: any)
   {
     this.amphoeID = value;
@@ -132,6 +135,28 @@ export class WorkCreatePage {
         });
     }
     
+  }
+
+  // บันทึกข้อมูล
+  workSubmit(){
+    this.storage.get('userID').then((val) => {
+      this.http.post('http://192.168.2.165:8000/api/add_work', {
+      place_name: this.place_name,
+      province: this.province,
+      dist: this.dist,
+      subdist: this.subdist,
+      detail: this.detail,
+      user_id: val,
+      }, { Authorization: 'OAuth2: token' })
+      .then(data => {   
+        console.log('data -> ' + data.data);
+        
+      })
+      .catch(error => {
+        console.log('error -> ' + JSON.stringify(error));
+      });
+
+    });
   }
   
 }

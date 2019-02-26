@@ -78,15 +78,14 @@ export class TimeInPage {
 
 
   save(){
-    this.http.uploadFile('hhttp://192.168.2.165:8000/api/upload_file', {
-      id: 12,
+    this.http.uploadFile('http://192.168.2.165:8000/api/upload_file', {
     }, { Authorization: 'OAuth2: token' }, this.filePath, 'picture')
     .then(data => {   
       console.log('data -> ' + data.data);
       
     })
     .catch(error => {
-      console.log('error -> ' + error);
+      console.log('error -> ' + JSON.stringify(error));
     });
   }
 

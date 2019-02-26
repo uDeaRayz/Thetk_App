@@ -12,12 +12,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  email = 'admin@test.com';
-  password = '111111';
-
- 
-
-
+  email = 'staff@test.com';
+  password = '0960030344';
 
   constructor(
     public navCtrl: NavController, 

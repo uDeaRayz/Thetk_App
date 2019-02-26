@@ -25,6 +25,12 @@ export class DayCreatePage {
   // ตัวแปร ของรูปภาพ
   leave_img: any;
 
+  leave_id = '';
+  type = '';
+  date_start = '';
+  date_end = '';
+  detail = '';
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -76,6 +82,26 @@ export class DayCreatePage {
         }, (err) => {
           console.log('ERROR -> ' + JSON.stringify(err));
     });  
+  }
+
+  leave_submit(){
+    this.storage.get('userID').then((val) => {
+      this.http.post('http://192.168.2.165:8000/api/add_leave', {
+      leave_id: this.leave_id,
+      type: this.type,
+      date_start: this.date_start,
+      date_end: this.date_end,
+      detail: this.detail,
+      user_id: val,
+      }, { Authorization: 'OAuth2: token' })
+      .then(data => {   
+        console.log('data -> ' + data.data);
+      })
+      .catch(error => {
+        console.log('error -> ' + JSON.stringify(error));
+      });
+
+    });
   }
 
 }
