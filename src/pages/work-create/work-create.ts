@@ -40,7 +40,7 @@ export class WorkCreatePage {
   ionViewDidLoad() {
 
     // Province
-    this.http.get('http://192.168.2.131/api/province', {}, {})
+    this.http.get('http://192.168.2.165:8000/api/province', {}, {})
     .then(data => {
         if(data.status == 200)
         {
@@ -86,7 +86,7 @@ export class WorkCreatePage {
     console.log(value);
     if(value != "")
     {
-      this.http.post('http://192.168.2.131/api/district', {
+      this.http.post('http://192.168.2.165:8000/api/district', {
         prov_id: value,
       
       }, { Authorization: 'OAuth2: token' })
@@ -113,7 +113,7 @@ export class WorkCreatePage {
     console.log(value);
     if(value != "")
     {
-      this.http.post('http://192.168.2.131/api/subdist', {
+      this.http.post('http://192.168.2.165:8000/api/subdist', {
         dist_id: value,
       
       }, { Authorization: 'OAuth2: token' })

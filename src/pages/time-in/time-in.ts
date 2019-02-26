@@ -62,7 +62,7 @@ export class TimeInPage {
     }
     this.camera.getPicture(options).then((imageData) => {
       this.filePath = imageData;
-      console.log(imageData);
+      console.log(imageData); 
 
       if (this.platform.is('ios'))
         this.PhotoIn = normalizeURL(imageData);
@@ -78,7 +78,7 @@ export class TimeInPage {
 
 
   save(){
-    this.http.uploadFile('http://192.168.2.131/api/upload_file', {
+    this.http.uploadFile('hhttp://192.168.2.165:8000/api/upload_file', {
       id: 12,
     }, { Authorization: 'OAuth2: token' }, this.filePath, 'picture')
     .then(data => {   
