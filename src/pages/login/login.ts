@@ -34,8 +34,9 @@ export class LoginPage {
   submit(){
 
     let loader = this.loadingCtrl.create({
-      content: "Waiting..."
+      // content: "Waiting..."
     });
+    loader.present();
 
     this.http.post('http://192.168.2.165:8000/api/login', {
       email: this.email,
@@ -67,7 +68,7 @@ export class LoginPage {
     })
     .catch(error => {
       const alert = this.alertCtrl.create({
-        title: 'error',
+        title: 'Error',
         subTitle: 'Please try again!',
         buttons: ['OK']
       });

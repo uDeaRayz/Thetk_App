@@ -9,9 +9,10 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-item>
-      <h3><b>วันที่:</b> </h3>
-      <h3><b>เวลาทำงาน: </b> - </h3>
+    <ion-item *ngFor="let data of time">
+      <h3><b>วันที่:</b> {{ data.atten_date }}</h3>
+      <h3><b>เวลาทำงาน: </b> {{ data.time_in }} - {{ data.time_out }}</h3>
     </ion-item>
   </ion-list>
+
 </ion-content>

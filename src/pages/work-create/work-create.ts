@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
+import { WorkShowPage } from '../work-show/work-show';
 
 
 
@@ -41,6 +42,7 @@ export class WorkCreatePage {
     private camera: Camera,
     private http: HTTP,
     private storage: Storage,
+    public alertCtrl: AlertController,
     ) {
   }
 
@@ -149,10 +151,27 @@ export class WorkCreatePage {
       user_id: val,
       }, { Authorization: 'OAuth2: token' })
       .then(data => {   
+        const alert = this.alertCtrl.create({
+          title: 'Success',
+          subTitle: 'บันทึกสำเร็จ',
+          buttons: [{
+            text: 'OK',
+            handler: () => {
+              this.navCtrl.push(WorkShowPage);
+            }
+          }]
+        });
+        alert.present();
         console.log('data -> ' + data.data);
         
       })
       .catch(error => {
+        const alert = this.alertCtrl.create({
+          title: 'Error',
+          subTitle: 'บันทึกไม่สำเร็จ',
+          buttons: ['OK']
+        });
+        alert.present();
         console.log('error -> ' + JSON.stringify(error));
       });
 

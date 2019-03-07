@@ -1,0 +1,22 @@
+<link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree" rel="stylesheet">
+<ion-header>
+  <ion-navbar>
+    <ion-title class="head-font">
+      รายการลาผ่านอนุมัติ
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+      <ion-list >
+        <ion-item *ngFor="let data of leave ">
+            <h2 class="title"><b>ประเภทการลา:</b> {{ data.amount_leave }}</h2>
+            <p class="p"><b>วันที่ลา:</b> {{ data.date_start }} - {{ data.date_end }}</p>
+            <p class="p" *ngIf=" data.add_type == 1"><b>จำนวนวันลา:</b> ครึ่งวันเช้า</p>
+            <p class="p" *ngIf=" data.add_type == 2"><b>จำนวนวันลา:</b> ครึ่งวันบ่าย</p>
+            <p class="p" *ngIf=" data.add_type == 3"><b>จำนวนวันลา:</b> {{ data.total }} วัน</p>
+            <p class="p"><b>รายละเอีด:</b> {{ data.detail }}</p>
+        </ion-item>
+      </ion-list>
+</ion-content>

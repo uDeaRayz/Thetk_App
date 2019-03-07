@@ -12,6 +12,8 @@ import { QRScanner } from '@ionic-native/qr-scanner';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
+import { AuthServiceProvider } from '../providers/auth-service/auth-service';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -26,13 +28,15 @@ import { WorkCreatePage } from '../pages/work-create/work-create';
 import { WorkShowPage } from '../pages/work-show/work-show';
 import { DayCreatePage } from '../pages/day-create/day-create';
 import { DayShowPage } from '../pages/day-show/day-show';
-import { ProfilePage } from '../pages/profile/profile';
-import { ProfileupdatePage } from '../pages/profileupdate/profileupdate';
 import { LoginPage } from '../pages/login/login';
-import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { TimeOutPage } from '../pages/time-out/time-out';
 import { TimeInPage } from '../pages/time-in/time-in';
 import { AmountPage } from '../pages/amount/amount';
+import { DaywaitPage } from '../pages/daywait/daywait';
+import { DayallowPage } from '../pages/dayallow/dayallow';
+import { DaynotPage } from '../pages/daynot/daynot';
+import { LocalNotifications } from '@ionic-native/local-notifications';
+
 
 
 @NgModule({
@@ -51,10 +55,12 @@ import { AmountPage } from '../pages/amount/amount';
     WorkShowPage,
     DayCreatePage,
     DayShowPage,
-    ProfilePage,
-    ProfileupdatePage,
     LoginPage,
     AmountPage,
+    DaywaitPage,
+    DayallowPage,
+    DaynotPage
+
   ],
   imports: [
     BrowserModule,
@@ -76,12 +82,14 @@ import { AmountPage } from '../pages/amount/amount';
     WorkShowPage,
     DayCreatePage,
     DayShowPage,
-    ProfilePage,
-    ProfileupdatePage,
     LoginPage,
     TimeInPage,
     TimeOutPage,
     AmountPage,
+    DayallowPage,
+    DaynotPage,
+    DaywaitPage,
+    
   ],
   providers: [
     StatusBar,
@@ -95,6 +103,8 @@ import { AmountPage } from '../pages/amount/amount';
     BarcodeScanner,
     FileTransfer,
     File,
+    Geolocation,
+    LocalNotifications,
   ]
 })
 export class AppModule {}

@@ -8,16 +8,15 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <ion-item>
-      <h2 class="title"><b>ประเภทการลา:</b> </h2>
-      <p><b>วันที่ลา:</b> </p>
-      <p><b>จำนวนวันลา:</b> </p>
-    </ion-item>
-    <img src="assets/imgs/trakool-logo.png">
-    <ion-card-content>
-      <h2><b>สถานะ:</b> </h2>
-      <p><b>หมายเหตุ:</b> </p>
-    </ion-card-content>
-  </ion-card>                                                             
+    <ion-list >
+        <a ion-item [navPush] = "wait" click="wait()">
+          <ion-icon name="add-circle"></ion-icon> &nbsp; รายการรออนุมัติ
+        </a>
+        <a ion-item [navPush] = "allow">
+          <ion-icon name="calendar"></ion-icon> &nbsp; รายการผ่านอนุมัติ
+        </a>
+        <a ion-item [navPush] = "not">
+          <ion-icon name="copy"></ion-icon> &nbsp; รายการไม่ผ่านอนุมัติ
+        </a>
+      </ion-list>
 </ion-content>

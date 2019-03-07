@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { DaywaitPage } from '../daywait/daywait';
+import { DayallowPage } from '../dayallow/dayallow';
+import { DaynotPage } from '../daynot/daynot';
 /**
  * Generated class for the DayShowPage page.
  *
@@ -14,8 +16,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'day-show.html',
 })
 export class DayShowPage {
+  leave :any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  wait = DaywaitPage;
+  allow = DayallowPage;
+  not = DaynotPage;
+
+  constructor(
+      public navCtrl: NavController, 
+      public navParams: NavParams,
+    ) {
   }
 
   ionViewDidLoad() {

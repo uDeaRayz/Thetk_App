@@ -10,7 +10,7 @@
     <ion-item no-lines>
       <ion-label>ประเภทการลา</ion-label>
       <ion-select [(ngModel)]="leave_id" name="leave_id">
-        <ion-option *ngFor="let data of leave" value="{{ data.amount_id }}">{{ data.leave_name }} ({{ data.amount_num }})</ion-option>
+        <ion-option *ngFor="let data of leave" value="{{ data.amount_id }}">{{ data.amount_leave }} ({{ data.amount_num }})</ion-option>
       </ion-select>
     </ion-item>
     <ion-item no-lines>

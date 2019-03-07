@@ -1,0 +1,44 @@
+page-dayallow {
+        .head-font {
+            font-family: "Athiti", sans-serif;
+          }
+          ion-content {
+            font-size: 16px;
+            font-family: "Athiti", sans-serif;
+          }
+          ion-item {
+            margin-top: 20px;
+          }
+          ion-list-header{
+            font-size: 18px; 
+            font-family: "Athiti", sans-serif;
+          }
+        .title{
+          font-size: 18px; 
+          font-family: "Athiti", sans-serif;
+        }
+        .date{
+          font-size: 16px; 
+          font-family: "Athiti", sans-serif;
+        }
+        .num{
+          font-size: 16px; 
+          font-family: "Athiti", sans-serif;
+        }
+        .status{
+          font-size: 16px; 
+          font-family: "Athiti", sans-serif;
+        }
+        .p{
+          color:#111;
+        }
+        .wait{
+          color: orange;
+        }
+        .allow{
+          color: green;
+        }
+        .not{
+          color: red;
+        }
+}
