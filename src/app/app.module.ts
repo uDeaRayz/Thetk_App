@@ -14,7 +14,8 @@ import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { AuthServiceProvider } from '../providers/auth-service/auth-service';
 import { Geolocation } from '@ionic-native/geolocation';
-
+import { OneSignal } from '@ionic-native/onesignal';
+import { LocalNotifications } from '@ionic-native/local-notifications';
 import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -35,7 +36,7 @@ import { AmountPage } from '../pages/amount/amount';
 import { DaywaitPage } from '../pages/daywait/daywait';
 import { DayallowPage } from '../pages/dayallow/dayallow';
 import { DaynotPage } from '../pages/daynot/daynot';
-import { LocalNotifications } from '@ionic-native/local-notifications';
+
 
 
 
@@ -105,6 +106,7 @@ import { LocalNotifications } from '@ionic-native/local-notifications';
     File,
     Geolocation,
     LocalNotifications,
+    OneSignal,
   ]
 })
 export class AppModule {}

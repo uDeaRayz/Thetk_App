@@ -10,6 +10,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class AuthServiceProvider {
 
+  url:String = 'http://192.168.2.165:8000/';
   constructor(public http: HttpClient) {
     console.log('Hello AuthServiceProvider Provider');
   }

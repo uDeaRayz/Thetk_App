@@ -5,10 +5,7 @@ import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 import { WorkShowPage } from '../work-show/work-show';
-
-
-
-
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 
 @IonicPage()
@@ -27,6 +24,7 @@ export class WorkCreatePage {
   amphoeID: any;
   arrAmphoe: any;
   arrTambon: any;
+  filePath: any;
 
   place_name = '';
   province = '';
@@ -43,13 +41,14 @@ export class WorkCreatePage {
     private http: HTTP,
     private storage: Storage,
     public alertCtrl: AlertController,
+    public authService: AuthServiceProvider,
     ) {
   }
 
   ionViewDidLoad() {
 
     // Province
-    this.http.get('http://192.168.2.165:8000/api/province', {}, {})
+    this.http.get(this.authService.url+'/api/province', {}, {})
     .then(data => {
         if(data.status == 200)
         {
@@ -90,7 +89,7 @@ export class WorkCreatePage {
     console.log(value);
     if(value != "")
     {
-      this.http.post('http://192.168.2.165:8000/api/district', {
+      this.http.post(this.authService.url+'/api/district', {
         prov_id: value,
       
       }, { Authorization: 'OAuth2: token' })
@@ -118,7 +117,7 @@ export class WorkCreatePage {
     console.log(value);
     if(value != "")
     {
-      this.http.post('http://192.168.2.165:8000/api/subdist', {
+      this.http.post(this.authService.url+'/api/subdist', {
         dist_id: value,
       
       }, { Authorization: 'OAuth2: token' })
@@ -142,14 +141,14 @@ export class WorkCreatePage {
   // บันทึกข้อมูล
   workSubmit(){
     this.storage.get('userID').then((val) => {
-      this.http.post('http://192.168.2.165:8000/api/add_work', {
+      this.http.uploadFile(this.authService.url+'/api/add_work', {
       place_name: this.place_name,
       province: this.province,
       dist: this.dist,
       subdist: this.subdist,
       detail: this.detail,
       user_id: val,
-      }, { Authorization: 'OAuth2: token' })
+      }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
       .then(data => {   
         const alert = this.alertCtrl.create({
           title: 'Success',

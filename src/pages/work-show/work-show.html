@@ -12,9 +12,9 @@
     <ion-card>
       <ion-item>
         <h2 style="margin-top:10px;" class="title"><b>สถานที่:</b> {{ data.place}} </h2>
-        <p class="p"><b>วันที่:</b> {{ data.date }}</p>
+        <p class="p"><b>วันที่:</b> {{ data.date }} </p>
       </ion-item>
-      <img src="assets/imgs/trakool-logo.png">
+      <img src="{{ url }}{{ data.work_img }}">
       <ion-card-content>
         <p class="p"><b>ที่อยู่:</b> ตำบล {{ data.subdist_name }}  อำเภอ {{ data.dist_name }} <br> จังหวัด {{ data.prov_name }}</p>
         <p class="p"><b>รายละเอียด:</b> {{ data.detail }}</p>

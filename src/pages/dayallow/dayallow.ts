@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 
 /**
@@ -25,12 +26,13 @@ export class DayallowPage {
       public navParams: NavParams,
       private http: HTTP,
       private storage: Storage,
+      public authService: AuthServiceProvider,
     ) {
   }
 
   ionViewDidLoad() {
     this.storage.get('userID').then((val) => {
-      this.http.post('http://192.168.2.165:8000/api/allow', 
+      this.http.post(this.authService.url+'/api/allow', 
       { user_id: val }, {Authorization: 'OAuth2: token'})
       .then(data => {
         if(data.status == 200)

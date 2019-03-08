@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the DaynotPage page.
@@ -24,12 +25,13 @@ export class DaynotPage {
       public navParams: NavParams,
       private http: HTTP,
       private storage: Storage,
+      public authService: AuthServiceProvider,
     ) {
   }
 
   ionViewDidLoad() {
     this.storage.get('userID').then((val) => {
-      this.http.post('http://192.168.2.165:8000/api/not_allow', 
+      this.http.post(this.authService.url+'/api/not_allow', 
       { user_id: val }, {Authorization: 'OAuth2: token'})
       .then(data => {
         if(data.status == 200)

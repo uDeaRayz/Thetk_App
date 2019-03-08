@@ -5,6 +5,7 @@ import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
 import { Storage } from '@ionic/storage';
 import { DayShowPage } from '../day-show/day-show';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
 /**
  * Generated class for the DayCreatePage page.
@@ -25,6 +26,7 @@ export class DayCreatePage {
   leave:any;
   // ตัวแปร ของรูปภาพ
   leave_img: any;
+  filePath: any;
 
   leave_id = '';
   type = '';
@@ -39,14 +41,15 @@ export class DayCreatePage {
     private storage: Storage,
     public alertCtrl: AlertController,
     private camera: Camera,
-    public loadingCtrl: LoadingController,) {
+    public loadingCtrl: LoadingController,
+    public authService: AuthServiceProvider,) {
   }
 
 
   ionViewDidLoad() {
 
     this.storage.get('userID').then((val) => {
-      this.http.post('http://192.168.2.165:8000/api/amount', 
+      this.http.post(this.authService.url+'/api/amount', 
       { user_id: val }, {Authorization: 'OAuth2: token'})
       .then(data => {
         if(data.status == 200)
@@ -94,14 +97,14 @@ export class DayCreatePage {
     loader.present();
 
     this.storage.get('userID').then((val) => {
-      this.http.post('http://192.168.2.165:8000/api/add_leave', {
+      this.http.uploadFile(this.authService.url+'/api/add_leave', {
       leave_id: this.leave_id,
       type: this.type,
       date_start: this.date_start,
       date_end: this.date_end,
       detail: this.detail,
       user_id: val,
-      }, { Authorization: 'OAuth2: token' })
+      }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
       .then(data => {   
         loader.dismiss(); 
         const alert = this.alertCtrl.create({

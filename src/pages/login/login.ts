@@ -12,8 +12,8 @@ import { Storage } from '@ionic/storage';
   templateUrl: 'login.html',
 })
 export class LoginPage {
-  email = 'staff@test.com';
-  password = '0960030344';
+  email = '';
+  password = '';
 
   constructor(
     public navCtrl: NavController, 
@@ -38,7 +38,7 @@ export class LoginPage {
     });
     loader.present();
 
-    this.http.post('http://192.168.2.165:8000/api/login', {
+    this.http.post(this.authService.url+'/api/login', {
       email: this.email,
       password: this.password,
     }, { Authorization: 'OAuth2: token' })
@@ -50,7 +50,7 @@ export class LoginPage {
         this.storage.set('userfName', jParse.fname);
         this.storage.set('userlName', jParse.lname);
         this.storage.set('userImg', jParse.img);
-        this.storage.set('url', 'http://192.168.2.165:8000/');
+        this.storage.set('url',this.authService.url );
         console.log('Login Success'); 
         loader.dismiss(); 
         this.navCtrl.push(TabsPage);

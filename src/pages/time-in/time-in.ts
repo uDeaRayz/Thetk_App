@@ -27,6 +27,8 @@ export class TimeInPage {
   latitude: any;
 
   qrcode = '';
+  long = '';
+  lat = '';
   picture : any;
 
   constructor(
@@ -55,6 +57,12 @@ export class TimeInPage {
      }).catch(err => {
          console.log('Error', err);
      });
+
+     let watch = this.geolocation.watchPosition();
+     watch.subscribe((data) => {
+     this.latitude = data.coords.latitude
+     this.longitude  =  data.coords.longitude
+     });
   }
 
 
@@ -82,28 +90,19 @@ export class TimeInPage {
   }
 
 
-  upload(){
-    this.http.uploadFile('http://192.168.2.165:8000/api/upload_file', {
-    }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
-    .then(data => {   
-      console.log('data -> ' + data.data);
+  // upload(){
+  //   this.http.uploadFile(this.authService.url+'/api/upload_file', {
+  //   }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
+  //   .then(data => {   
+  //     console.log('data -> ' + data.data);
       
-    })
-    .catch(error => {
-      console.log('error -> ' + JSON.stringify(error));
-    });
-  }
+  //   })
+  //   .catch(error => {
+  //     console.log('error -> ' + JSON.stringify(error));
+  //   });
+  // }
 
 
-
-   location(){
-    this.geolocation.getCurrentPosition().then((resp) => {
-      this.latitude = resp.coords.latitude;
-      this.longitude = resp.coords.longitude;
-     }).catch((error) => {
-       console.log('Error getting location', error);
-     });
-   }
 
   save(){
 
@@ -114,10 +113,10 @@ export class TimeInPage {
 
 
     this.storage.get('userID').then((val) => {
-      this.http.post('http://192.168.2.165:8000/api/add_in', {
-      qrcode: this.textQR,
+      this.http.uploadFile(this.authService.url+'/api/add_in', {
+      qrcode: this.textQR, long: this.longitude, lat: this.latitude,
       user_id: val,
-      }, { Authorization: 'OAuth2: token' })
+      }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
       .then(data => {   
         loader.dismiss(); 
         const alert = this.alertCtrl.create({

@@ -9,25 +9,15 @@
 
 <ion-content padding>
   <form>
-    <button ion-button full class="btn" (click)="ScanIn()">
-      แสกน {{ textQR }}
-    </button>
     <p style="text-align: center;"><img *ngIf="PhotoIn" src="{{ PhotoIn }}"></p>
+    <button ion-button full class="btn" (click)="ScanIn()">
+      แสกน 
+    </button>
     <button ion-button full class="btn" (click)="takePhoto()">
       ถ่ายรูป
-    </button>
-
-    <button ion-button full class="btn"  (click)="upload()">
-      บันทึกรูป
-    </button>
-    <button ion-button full class="btn"  (click)="location()">
-      Location 
     </button>
     <button ion-button full class="btn"  (click)="save()">
       บันทึก
     </button>
-
-    <p>latitude: {{ latitude }}</p>
-    <p>longitude: {{ longitude }}</p>
   </form>
 </ion-content>

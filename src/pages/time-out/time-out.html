@@ -9,11 +9,10 @@
 
 <ion-content padding>
   <form>
-    <p style="text-align: center;"><img *ngIf="myPhoto" src="{{ myPhoto }}"></p>
+    <p style="text-align: center;"><img *ngIf="PhotoOut" src="{{ PhotoOut }}"></p>
     <button ion-button full class="btn" (click)="takePhoto()">
       ถ่ายรูป
     </button>
-    <input type="hidden" [(ngModel)]="status" name="status" value="0">
     <button ion-button full class="btn" (click)="save()">
       บันทึก
     </button>
