@@ -8,7 +8,6 @@ import { WebView } from '@ionic-native/ionic-webview/ngx';
 import 'rxjs/add/operator/toPromise';
 import {HttpClientModule} from '@angular/common/http'
 import { IonicStorageModule } from '@ionic/storage';
-import { QRScanner } from '@ionic-native/qr-scanner';
 import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { FileTransfer } from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
@@ -100,7 +99,6 @@ import { DaynotPage } from '../pages/daynot/daynot';
     WebView,
     HTTP,
     AuthServiceProvider,
-    QRScanner,
     BarcodeScanner,
     FileTransfer,
     File,
