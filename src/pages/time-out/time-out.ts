@@ -70,7 +70,7 @@ export class TimeOutPage {
     loader.present();
 
     this.storage.get('userID').then((val) => {
-      this.http.uploadFile(this.AuthServiceProvider.url+'/api/add_out', {
+      this.http.uploadFile(this.AuthServiceProvider.url+'api/add_out', {
       user_id: val,
       }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
       .then(data => {   

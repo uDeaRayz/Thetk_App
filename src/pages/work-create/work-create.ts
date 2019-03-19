@@ -48,7 +48,7 @@ export class WorkCreatePage {
   ionViewDidLoad() {
 
     // Province
-    this.http.get(this.authService.url+'/api/province', {}, {})
+    this.http.get(this.authService.url+'api/province', {}, {})
     .then(data => {
         if(data.status == 200)
         {

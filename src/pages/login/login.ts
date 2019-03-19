@@ -37,8 +37,8 @@ export class LoginPage {
       // content: "Waiting..."
     });
     loader.present();
-
-    this.http.post(this.authService.url+'/api/login', {
+    let url = this.authService.url+'api/login';
+    this.http.post( url, {
       email: this.email,
       password: this.password,
     }, { Authorization: 'OAuth2: token' })
@@ -69,7 +69,7 @@ export class LoginPage {
     .catch(error => {
       const alert = this.alertCtrl.create({
         title: 'Error',
-        subTitle: 'Please try again!',
+        subTitle: error,
         buttons: ['OK']
       });
       alert.present();

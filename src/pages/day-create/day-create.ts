@@ -49,7 +49,7 @@ export class DayCreatePage {
   ionViewDidLoad() {
 
     this.storage.get('userID').then((val) => {
-      this.http.post(this.authService.url+'/api/amount', 
+      this.http.post(this.authService.url+'api/amount', 
       { user_id: val }, {Authorization: 'OAuth2: token'})
       .then(data => {
         if(data.status == 200)

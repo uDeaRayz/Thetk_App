@@ -32,7 +32,7 @@ export class WorkShowPage {
       this.url = val;
     });
     this.storage.get('userID').then((val) => {
-      this.http.post(this.authService.url+'/api/showWork', 
+      this.http.post(this.authService.url+'api/showWork', 
       { user_id: val }, {Authorization: 'OAuth2: token'})
       .then(data => {
         if(data.status == 200)
