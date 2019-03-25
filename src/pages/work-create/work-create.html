@@ -35,10 +35,6 @@
       <ion-label color="dark" floating>รายละเอียดงาน</ion-label>
       <ion-input type="text" [(ngModel)]="detail" name="detail"></ion-input>
     </ion-item>
-    <p style="text-align: center;"><img *ngIf="myPhoto" src="{{ myPhoto }}"></p>
-    <button ion-button full class="btn" (click)="takePhoto()">
-      เพิ่มรูป
-    </button>
     <button ion-button full class="btn" (click)="workSubmit()">
       บันทึก
     </button>

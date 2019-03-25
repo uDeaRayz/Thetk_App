@@ -97,14 +97,14 @@ export class DayCreatePage {
     loader.present();
 
     this.storage.get('userID').then((val) => {
-      this.http.uploadFile(this.authService.url+'/api/add_leave', {
+      this.http.post(this.authService.url+'/api/add_leave', {
       leave_id: this.leave_id,
       type: this.type,
       date_start: this.date_start,
       date_end: this.date_end,
       detail: this.detail,
       user_id: val,
-      }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
+      }, { Authorization: 'OAuth2: token' })
       .then(data => {   
         loader.dismiss(); 
         const alert = this.alertCtrl.create({

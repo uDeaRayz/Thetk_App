@@ -141,14 +141,14 @@ export class WorkCreatePage {
   // บันทึกข้อมูล
   workSubmit(){
     this.storage.get('userID').then((val) => {
-      this.http.uploadFile(this.authService.url+'/api/add_work', {
+      this.http.post(this.authService.url+'/api/add_work', {
       place_name: this.place_name,
       province: this.province,
       dist: this.dist,
       subdist: this.subdist,
       detail: this.detail,
       user_id: val,
-      }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
+      }, { Authorization: 'OAuth2: token' })
       .then(data => {   
         const alert = this.alertCtrl.create({
           title: 'Success',

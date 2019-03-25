@@ -43,9 +43,10 @@ $colors: (
   gray:       #7f7f7f,
   Mgreen:     #1A936F,
   Msky:       #297EAD,
+  head_r:     #5958a7,
 );
 
-$toolbar-background: color($colors, head);
+$toolbar-background: color($colors, head_r);
 
 
 // App iOS Variables
@@ -92,3 +93,4 @@ $toolbar-background: color($colors, head);
 
 @import "roboto";
 @import "noto-sans";
+

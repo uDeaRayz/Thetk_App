@@ -1,15 +1,18 @@
 page-work-create {
     .head-font {
-        font-family: "Athiti", sans-serif;
+      font-family: Athiti, sans-serif;
+      src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
       ion-content {
         font-size: 18px;
-        font-family: "Athiti", sans-serif;
+        font-family: Athiti, sans-serif;
+        src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
       .btn{
         font-size: 14pt;
         font-weight: bold;
-        font-family: "Athiti", sans-serif;
-        background-color: #2e89ba;
+        font-family: Athiti, sans-serif;
+        src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
+        background-color: #6d6ccc;
       }
 }

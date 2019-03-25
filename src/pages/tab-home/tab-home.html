@@ -1,11 +1,11 @@
-<link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css?family=Athiti|Bai+Jamjuree" rel="stylesheet"> -->
 <ion-header>
   <ion-navbar>
     <ion-title class="head-font"><ion-icon name="home"></ion-icon>&nbsp;หน้าแรก</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content padding class="body">
   <label class="h-font">ข้อมูลทั่วไป</label>
   <ul>
     <li>วันที่: {{today | date: 'EEEE dd MMMM yyyy'}}</li>
@@ -14,8 +14,9 @@
   <br>
   <br>
   <ion-list>
-    <button ion-button full class="btn" (click)="In()">บันทึกเข้างาน</button>
-    <button ion-button full class="btn" (click)="Out()">บันทึกออกงาน</button>
+    <button ion-button block class="btn_in" (click)="In()">บันทึกเข้างาน</button>
+    <br>
+    <button ion-button block class="btn_out" (click)="Out()">บันทึกออกงาน</button>
   </ion-list>
 </ion-content>
   

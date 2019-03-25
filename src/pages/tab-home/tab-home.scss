@@ -1,27 +1,39 @@
 page-tab-home {
+  
+.body {
+  font-family: "Athiti-Light" !important;
+  font-size: 13pt;
+}
     li {
-        font-size: 16px;
-        font-family: "Athiti", sans-serif;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
       .h-font {
-        font-size: 22px;
+        font-size: 15pt;
         font-weight: bold;
-        font-family: "Athiti", sans-serif;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
       .head-font {
-        font-family: "Athiti", sans-serif;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
       .title-font {
-        font-size: 16px;
-        font-family: "Athiti", sans-serif;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
-      .btn{
+      .btn_in{
         font-size: 16pt;
-        font-weight: bold;
-        font-family: "Athiti", sans-serif;
-        background-color: #2e89ba;
+        // font-weight: bold;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
+        background-color: #6d6ccc;
       }
-      li{
-        font-size: 14pt;
+      .btn_out{
+        font-size: 16pt;
+        // font-weight: bold;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
+        background-color: #816666;
       }
 }

@@ -1,7 +1,4 @@
 page-login {
-
-}
-page-login {
     .img {
       margin-top: 80px;
       width: 200px;
@@ -23,7 +20,7 @@ page-login {
       opacity: 0.7;
       width: 50%;
       height: 50px;
-      font-family: "Athiti", sans-serif;
+          font-family: Athiti, sans-serif;
     }
     .login-content {
       background-image: url("../assets/imgs/login-bg.jpg");
@@ -31,7 +28,7 @@ page-login {
       background-repeat: no-repeat;
       background-size: cover;
       text-align: center;
-      font-family: "Athiti", sans-serif;
+          src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       .logo-row {
         padding-top: 50px;
         padding-bottom: 20px;

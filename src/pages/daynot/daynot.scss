@@ -1,33 +1,40 @@
 page-daynot {
     .head-font {
-        font-family: "Athiti", sans-serif;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
       ion-content {
         font-size: 16px;
-        font-family: "Athiti", sans-serif;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
       ion-item {
         margin-top: 20px;
       }
       ion-list-header{
         font-size: 18px; 
-        font-family: "Athiti", sans-serif;
+            font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
     .title{
       font-size: 18px; 
-      font-family: "Athiti", sans-serif;
+          font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
     }
     .date{
       font-size: 16px; 
-      font-family: "Athiti", sans-serif;
+          font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
     }
     .num{
       font-size: 16px; 
-      font-family: "Athiti", sans-serif;
+          font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
     }
     .status{
       font-size: 16px; 
-      font-family: "Athiti", sans-serif;
+          font-family: Athiti, sans-serif;
+    src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
     }
     .p{
       color:#111;

@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
+import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { HTTP } from '@ionic-native/http';
 import 'rxjs/add/operator/toPromise';
+import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Platform } from 'ionic-angular';
-import { normalizeURL } from 'ionic-angular';
+// import { normalizeURL } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 import { TabTimePage } from '../tab-time/tab-time';
-import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
+import { Geolocation } from '@ionic-native/geolocation';
 
 /**
  * Generated class for the TimeOutPage page.
@@ -25,94 +26,99 @@ export class TimeOutPage {
 
   PhotoOut: any;
   filePath: any;
+  textQR: any;
+  longitude: any;
+  latitude: any;
 
-  constructor(public navCtrl: NavController, 
+  qrcode = '';
+  long = '';
+  lat = '';
+  picture: any;
+
+  constructor(
+    public navCtrl: NavController,
     public navParams: NavParams,
+    private barcodeScanner: BarcodeScanner,
     private http: HTTP,
     private storage: Storage,
+    public authService: AuthServiceProvider,
     public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController,
-    private camera: Camera,
     public platform: Platform,
-    private AuthServiceProvider:AuthServiceProvider) {
+    public alertCtrl: AlertController,
+    private geolocation: Geolocation,
+    public toastCtrl: ToastController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad TimeOutPage');
-  }
- // ฟังก์ชันการถ่ายภาพ
- takePhoto(pictureSourceType: any){
-  const options: CameraOptions = {
-    quality: 100,
-    destinationType: this.camera.DestinationType.FILE_URI,
-    encodingType: this.camera.EncodingType.JPEG,
-    mediaType: this.camera.MediaType.PICTURE,
-    sourceType: pictureSourceType,
-  }
-  this.camera.getPicture(options).then((imageData) => {
-    this.filePath = imageData;
-    // console.log(this.filePath); 
+    this.barcodeScanner.scan().then(barcodeData => {
+      this.textQR = barcodeData.text;
 
-    if (this.platform.is('ios'))
-      this.PhotoOut = normalizeURL(imageData);
-    else
-      this.PhotoOut= "data:image/jpeg;base64," + imageData;
+      let watch = this.geolocation.watchPosition();
+      watch.subscribe((data) => {
+        this.latitude = data.coords.latitude
+        this.longitude = data.coords.longitude
+      });
 
-  }, (err) => {
-        console.log('ERROR -> ',err);
-  });  
-}
-  save(){
-
-    let loader = this.loadingCtrl.create({
-      content: "Saving..."
-    });
-    loader.present();
-
-    this.storage.get('userID').then((val) => {
-      this.http.uploadFile(this.AuthServiceProvider.url+'api/add_out', {
-      user_id: val,
-      }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
-      .then(data => {   
-        loader.dismiss(); 
-        const alert = this.alertCtrl.create({
-          title: 'Success',
-          subTitle: 'บันทึกสำเร็จ',
-          buttons: [{
+      let loader = this.loadingCtrl.create({
+        content: "Saving..."
+      });
+      loader.present();
+      this.storage.get('userID').then((val) => {
+        this.http.post(this.authService.url + 'api/add_out',
+          {
+            qrcode: this.textQR,
+            long: this.longitude, lat: this.latitude,
+            user_id: val
+          }, { Authorization: 'OAuth2: token' })
+          .then(data => {
+            if (data.status == 200) {
+              loader.dismiss();
+              const alert = this.alertCtrl.create({
+                title: 'Success',
+                subTitle: 'บันทึกสำเร็จ',
+                buttons: [{
+                  text: 'OK',
+                  handler: () => {
+                    this.navCtrl.push(TabTimePage);
+                  }
+                }]
+              });
+              alert.present();
+              console.log('data -> ' + data.data);
+            }
+            else {
+              loader.dismiss();
+              const alert = this.alertCtrl.create({
+                title: 'Error',
+                subTitle: 'บันทึกไม่สำเร็จ',
+                buttons: [{
+                  text: 'OK',
+                  handler: () => {
+                    this.navCtrl.push(TabTimePage);
+                  }
+                }]
+              });
+              alert.present();
+            }
+          })
+          .catch(error => {
+            loader.dismiss();
+            const alert = this.alertCtrl.create({
+              title: 'Error',
+              subTitle: 'บันทึกไม่สำเร็จ',
+              buttons: [{
                 text: 'OK',
                 handler: () => {
                   this.navCtrl.push(TabTimePage);
                 }
               }]
-        });
-        alert.present();
-        console.log('data -> ' + data.data);
-        
-      })
-      .catch(error => {
-        loader.dismiss(); 
-        const alert = this.alertCtrl.create({
-          title: 'Error',
-          subTitle: 'บันทึกไม่สำเร็จ',
-          buttons: ['OK']
-        });
-        alert.present();
-        console.log('error -> ' + JSON.stringify(error));
+            });
+            alert.present();
+          });
       });
+    }).catch(err => {
+      console.log('Error', err);
     });
-
+    console.log('ionViewDidLoad TimeOutPage');
   }
-
-  upload(){
-    this.http.uploadFile('http://192.168.2.165:8000/api/upload_file', {
-    }, { Authorization: 'OAuth2: token' },this.filePath,'picture')
-    .then(data => {   
-      console.log('data -> ' + data.data);
-      
-    })
-    .catch(error => {
-      console.log('error -> ' + JSON.stringify(error));
-    });
-  }
-
 }

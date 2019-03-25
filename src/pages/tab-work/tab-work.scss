@@ -1,9 +1,11 @@
 page-tab-work {
     .head-font {
-        font-family: "Athiti", sans-serif;
+      font-family: Athiti, sans-serif;
+      src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
       ion-content {
         font-size: 18px;
-        font-family: "Athiti", sans-serif;
+        font-family: Athiti, sans-serif;
+        src: url(../assets/fonts/Athiti-Light.ttf) format("ttf");
       }
 }

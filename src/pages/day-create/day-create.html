@@ -34,9 +34,5 @@
       <ion-input type="text" [(ngModel)]="detail" name="detail"></ion-input>
     </ion-item>
   </ion-list>
-  <p style="text-align: center;"><img *ngIf="leave_img" src="{{ leave_img }}"></p>
-  <button ion-button full class="btn" (click)="TakePhoto()">
-    เพิ่มรูป
-  </button>
-  <button ion-button full class="btn" (click)="leave_submit()">บันทึกการลา</button>
+  <button ion-button block class="btn" (click)="leave_submit()">บันทึกการลา</button>
 </ion-content>
