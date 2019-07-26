@@ -14,7 +14,7 @@ export class AuthServiceProvider {
   isLoggedIn: Boolean;
   user: any;
 
-  url: String = 'http://172.17.36.96:8000/';
+  url: String = 'http://timeattendance.trakool-project.com/';
   constructor(public http: HttpClient, public storage: Storage) {
 
     this.storage.get('userID').then((user) => {

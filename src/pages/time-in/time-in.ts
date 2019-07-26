@@ -30,6 +30,7 @@ export class TimeInPage {
   long = '';
   lat = '';
   picture: any;
+  jParse: any;
 
   constructor(
     public navCtrl: NavController,
@@ -68,26 +69,28 @@ export class TimeInPage {
             user_id: val
           }, { Authorization: 'OAuth2: token' })
           .then(data => {
+            this.jParse = JSON.stringify(data.data);
             if (data.status == 200) {
               loader.dismiss();
               const alert = this.alertCtrl.create({
                 title: 'Success',
-                subTitle: 'บันทึกสำเร็จ',
+                subTitle: 'บันทึกสำเร็จ'+this.jParse+'lat'+this.latitude+'long'+this.longitude,
                 buttons: [{
                   text: 'OK',
-                  handler: () => {
-                    this.navCtrl.push(TabTimePage);
-                  }
+                  // handler: () => {
+                  //   this.navCtrl.push(TabTimePage);
+                  // }
                 }]
               });
               alert.present();
               console.log('data -> ' + data.data);
             }
             else {
+              
               loader.dismiss();
               const alert = this.alertCtrl.create({
                 title: 'Error',
-                subTitle: 'บันทึกไม่สำเร็จ',
+                subTitle: 'บันทึกไม่สำเร็จจากAPI'+this.jParse,
                 buttons: [{
                   text: 'OK',
                   handler: () => {
@@ -102,7 +105,7 @@ export class TimeInPage {
             loader.dismiss();
             const alert = this.alertCtrl.create({
               title: 'Error',
-              subTitle: 'บันทึกไม่สำเร็จ',
+              subTitle: 'บันทึกไม่สำเร็จNOT',
               buttons: [{
                 text: 'OK',
                 handler: () => {
